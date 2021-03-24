@@ -18,6 +18,7 @@ form.addEventListener("submit", function (e) {
     document.querySelector("body").style.background = colorHEX();
     form.textCarta.classList.remove("is-invalid");
     document.getElementById("espacioCartas").innerHTML = '';
+    arr = [];
     for (let index = 0; index < form.textCarta.value; index++) {
       
       let simbolo = generarSimbolo();
