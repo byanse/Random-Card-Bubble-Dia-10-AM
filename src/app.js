@@ -19,22 +19,23 @@ form.addEventListener("submit", function (e) {
     form.textCarta.classList.remove("is-invalid");
     document.getElementById("espacioCartas").innerHTML = '';
     arr = [];
+    document.getElementById("cartasOrdenadasBubbleSort").innerHTML = '';
     for (let index = 0; index < form.textCarta.value; index++) {
       
       let simbolo = generarSimbolo();
       var numeroAletorio = Math.floor(Math.random() * 13) + 1;
       let numeroSimbolo = {"numero": numeroAletorio, "simbolo": simbolo};
+      let espacio ="espacioCartas";
 
       arr.push(numeroSimbolo);
-      console.log(arr);
-
-      crearCarta(numeroAletorio,simbolo);
+      
+      crearCarta(numeroAletorio,simbolo,espacio);
     }
   }
 });
 
-function crearCarta (numero,simbolo){
-  let espacioCartas = document.getElementById("espacioCartas");
+function crearCarta (numero,simbolo,espacio){ // 9  // "♥" // "espacioCartas"
+  let espacioCartas = document.getElementById(espacio);
   let divCarta = document.createElement("div");
   divCarta.classList.add("card");
 
@@ -90,10 +91,10 @@ function ordernarCartas(){
     }
   }
 
-  document.getElementById("espacioCartas").innerHTML = '';
+  document.getElementById("cartasOrdenadasBubbleSort").innerHTML = '';
   for (let i = 0; i < arr.length; i++) {
     const numeroSimbolo = arr[i];
-    crearCarta(numeroSimbolo.numero,numeroSimbolo.simbolo);
+    crearCarta(numeroSimbolo.numero,numeroSimbolo.simbolo,"cartasOrdenadasBubbleSort");
   }
 }
 
